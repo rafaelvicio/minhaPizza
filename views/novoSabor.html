@@ -7,6 +7,7 @@
 <div class="fieldset">
   <label class="label">Nome: </label>
   <input type="text" ng-model="pizza.nome" name="nome" required/>
+  <button ng-click="nomeAleatorio()">Aleatório</button>
   <div class="error-message" ng-show="pizzaForm.nome.$dirty && pizzaForm.nome.$invalid">
     O campo nome é obrigatorio
   </div>

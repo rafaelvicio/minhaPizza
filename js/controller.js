@@ -1,5 +1,5 @@
 angular.module("minhaPizza")
-    .controller("novoSaborCtrl", ['$scope', '$routeParams', function($scope, $routeParams){
+    .controller("novoSaborCtrl", ['$scope', '$routeParams', 'nomesFactory', function($scope, $routeParams, nomesFactory){
 
     $scope.pizza = {
       nome: $routeParams.nome,
@@ -30,6 +30,10 @@ angular.module("minhaPizza")
       total += ($scope.pizza.formato === 'Redonda' ? 2 : 5);
       total += ($scope.pizza.formato === 'Quadrada' ? 5 : 0);
       return total;
+    };
+
+    $scope.nomeAleatorio = function(){
+      $scope.pizza.nome = nomesFactory();
     };
 
   }]);
