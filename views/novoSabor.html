@@ -1,10 +1,15 @@
+<form name="pizzaForm" novalidate>
+
 <div class="breadcrumb">
   Sabores > Customização > {{pizza.nome}}
 </div>
 
 <div class="fieldset">
   <label class="label">Nome: </label>
-  <input type="text" ng-model="pizza.nome"/>
+  <input type="text" ng-model="pizza.nome" name="nome" required/>
+  <div class="error-message" ng-show="pizzaForm.nome.$dirty && pizzaForm.nome.$invalid">
+    O campo nome é obrigatorio
+  </div>
 </div>
 
 <div class="fieldset">
@@ -27,8 +32,8 @@
 
 <div class="fieldset">
   <label class="label">Ingredientes:</label>
-  <input type="text" ng-model="Ingrediente.novo"/>
-  <button ng-click="Ingrediente.inserir()">Adicionar</button>
+  <input type="text" ng-model="Ingrediente.novo" name="ingrediente" ng-pattern="/[^\d]/g" required/>
+  <button ng-click="Ingrediente.inserir()" ng-disabled="pizzaForm.ingrediente.$invalid">Adicionar</button>
 
   <ul class="ingredientes">
     <li ng-repeat="ingrediente in pizza.ingredientes">
@@ -41,3 +46,5 @@
 <div class="fieldset">
   <b>Total: </b> {{ precoPizza() | reaisFilter }}
 </div>
+
+</form>
